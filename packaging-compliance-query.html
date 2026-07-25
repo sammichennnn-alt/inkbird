@@ -29,7 +29,7 @@
       --shadow: 0 16px 38px rgba(23, 33, 28, 0.08);
       --shadow-soft: 0 8px 22px rgba(23, 33, 28, 0.055);
       --shadow-hover: 0 18px 34px rgba(23, 33, 28, 0.12);
-      font-family: Inter, "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", Arial, sans-serif;
+      font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", Arial, sans-serif;
     }
 
     * { box-sizing: border-box; }
@@ -180,9 +180,14 @@
 
     .query-layout {
       display: grid;
-      grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.72fr);
+      grid-template-columns: minmax(380px, 0.64fr) minmax(0, 1fr);
       gap: 16px;
-      align-items: start;
+      align-items: stretch;
+    }
+
+    .query-layout > .panel {
+      min-width: 0;
+      height: 100%;
     }
 
     .panel {
@@ -502,34 +507,49 @@
     }
 
     .query-panel .form-grid {
-      gap: 9px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 9px 10px;
+      align-items: end;
     }
 
+    .query-market-field { grid-column: 1 / -1; order: 1; }
+    .query-brand-field { order: 2; }
+    .query-category-field { order: 3; }
+    .query-manufacturer-field { order: 4; }
+    .query-distributor-field { order: 5; }
+    .query-electric-field { order: 6; }
+    .query-package-field { order: 7; }
+    .query-wireless-field { order: 8; }
+    .query-plug-field { order: 9; }
+    .query-battery-field { order: 10; }
+
     .query-panel .field label {
-      font-size: 12px;
-      margin-bottom: 5px;
+      font-size: 11px;
+      margin-bottom: 4px;
     }
 
     .query-panel .field select,
     .query-panel .field input {
-      min-height: 36px;
-      padding: 0 10px;
-      font-size: 14px;
+      min-height: 34px;
+      padding: 0 9px;
+      font-size: 13px;
     }
 
     .query-panel .brand-multi-trigger {
-      min-height: 36px;
+      min-height: 34px;
+      font-size: 13px;
     }
 
     .query-panel .check-grid {
-      gap: 6px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 5px;
     }
 
     .query-panel .check-pill {
-      min-height: 32px;
-      padding: 0 8px;
-      gap: 6px;
-      font-size: 12px;
+      min-height: 34px;
+      padding: 0 6px;
+      gap: 5px;
+      font-size: 11px;
     }
 
     .query-panel .check-pill input {
@@ -538,15 +558,17 @@
     }
 
     .query-panel .button-row {
+      grid-column: 1 / -1;
+      order: 11;
       gap: 8px;
-      margin-top: 2px;
+      margin-top: 0;
     }
 
     .query-panel .primary-button,
     .query-panel .secondary-button {
-      min-height: 38px;
+      min-height: 34px;
       padding: 0 12px;
-      font-size: 14px;
+      font-size: 13px;
     }
 
     .icon {
@@ -823,6 +845,14 @@
     .results-panel .badge {
       padding: 4px 9px;
       font-size: 11px;
+    }
+
+    .query-workspace .results-panel .result-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .query-layout > .results-panel .result-grid {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
     }
 
     .maintenance {
@@ -1281,7 +1311,7 @@
     }
 
     .package-demo-panel {
-      margin-top: 18px;
+      margin-top: 16px;
     }
 
     .package-demo-preview {
@@ -1308,6 +1338,77 @@
       color: rgba(255, 255, 255, 0.88);
       font-size: 13px;
       font-weight: 800;
+    }
+
+    .query-workspace .package-demo-preview {
+      padding: 16px;
+      grid-template-rows: auto auto auto;
+      gap: 14px;
+    }
+
+    .query-workspace .demo-warning-grid {
+      gap: 6px 16px;
+      font-size: 9px;
+    }
+
+    .query-workspace .demo-main-info {
+      grid-template-columns: minmax(0, 0.9fr) minmax(300px, 1.1fr);
+      gap: 14px;
+      align-items: center;
+    }
+
+    .query-workspace .demo-company h3 {
+      font-size: clamp(20px, 2vw, 24px);
+    }
+
+    .query-workspace .demo-company p,
+    .query-workspace .demo-info-list p,
+    .query-workspace .demo-rep p {
+      font-size: 10px;
+      line-height: 1.3;
+    }
+
+    .query-workspace .demo-info-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2px 10px;
+      margin-top: 6px;
+    }
+
+    .query-workspace .demo-rep {
+      grid-template-columns: 130px minmax(0, 1fr);
+      min-height: 56px;
+    }
+
+    .query-workspace .demo-rep-symbol {
+      min-height: 60px;
+      font-size: 18px;
+    }
+
+    .query-workspace .demo-footer-row {
+      grid-template-columns: minmax(0, 1fr) 112px;
+      gap: 12px;
+      min-height: 52px;
+    }
+
+    .query-workspace .demo-icon-row {
+      gap: 6px;
+      min-height: 48px;
+      flex-wrap: nowrap;
+    }
+
+    .query-workspace .demo-mark {
+      width: 60px;
+      height: 48px;
+      padding: 4px;
+    }
+
+    .query-workspace .demo-mark img {
+      max-height: 40px;
+    }
+
+    .query-workspace .demo-made {
+      min-width: 0;
+      font-size: 10px;
     }
 
     .demo-warning-grid {
@@ -1350,9 +1451,10 @@
 
     .demo-company h3 {
       margin: 0 0 4px;
-      font-size: clamp(20px, 3vw, 31px);
+      font-size: clamp(20px, 2.2vw, 27px);
       line-height: 1.08;
       letter-spacing: 0;
+      white-space: nowrap;
     }
 
     .demo-company p,
@@ -1829,12 +1931,39 @@
 
     @media (max-width: 900px) {
       .query-layout,
-      .result-grid,
       .rule-grid,
       .generator-layout,
       .rep-layout {
         grid-template-columns: 1fr;
       }
+
+      .result-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .query-workspace .results-panel .result-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .query-layout > .results-panel .result-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .query-panel .form-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .query-market-field { grid-column: 1 / -1; }
+      .query-brand-field,
+      .query-manufacturer-field,
+      .query-distributor-field,
+      .query-category-field,
+      .query-electric-field,
+      .query-package-field,
+      .query-wireless-field,
+      .query-plug-field,
+      .query-battery-field { grid-column: span 1; }
+      .query-panel .button-row { grid-column: 1 / -1; }
 
       .toolbar {
         grid-template-columns: 1fr;
@@ -1917,6 +2046,18 @@
         grid-template-columns: 1fr;
       }
 
+      .result-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .query-workspace .results-panel .result-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .query-layout > .results-panel .result-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
       .result-card {
         grid-template-columns: 1fr;
         grid-template-rows: 50px auto;
@@ -1934,6 +2075,30 @@
 
       .button-row {
         flex-direction: column;
+      }
+
+      .query-panel .form-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .query-panel .form-grid > *,
+      .query-panel .button-row {
+        grid-column: 1 / -1;
+      }
+
+      .query-panel .query-electric-field,
+      .query-panel .query-package-field,
+      .query-panel .query-wireless-field,
+      .query-panel .query-plug-field {
+        grid-column: span 1;
+      }
+
+      .query-panel .button-row {
+        flex-direction: row;
+      }
+
+      .query-panel .check-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .rule-form,
@@ -1988,8 +2153,17 @@
         margin-top: 18px;
       }
 
+      .query-workspace .demo-main-info {
+        display: block;
+      }
+
+      .query-workspace .demo-info-list {
+        grid-template-columns: 1fr;
+      }
+
       .demo-company h3 {
         font-size: 21px;
+        white-space: normal;
       }
 
       .demo-rep-grid {
@@ -2003,6 +2177,20 @@
         grid-template-columns: 112px minmax(0, 1fr);
         gap: 9px;
         align-items: start;
+      }
+
+      .query-workspace .demo-rep {
+        grid-template-columns: 112px minmax(0, 1fr);
+      }
+
+      .query-workspace .demo-icon-row {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .query-workspace .demo-mark {
+        width: 100%;
+        height: 48px;
       }
 
       .demo-rep-symbol {
@@ -2084,7 +2272,7 @@
           </div>
           <div class="panel-body">
             <form id="queryForm" class="form-grid">
-              <div class="field">
+              <div class="field query-market-field">
                 <label>目标市场</label>
                 <div id="marketGroup" class="check-grid">
                   <label class="check-pill"><input type="checkbox" name="market" value="欧洲|" checked>欧洲</label>
@@ -2095,7 +2283,7 @@
                 </div>
               </div>
 
-              <div class="field">
+              <div class="field query-brand-field">
                 <label id="brandSelectLabel">品牌</label>
                 <div id="brandMultiSelect" class="brand-multi-select">
                   <button id="brandTrigger" class="brand-multi-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="brandMenu">
@@ -2112,7 +2300,7 @@
                 </div>
               </div>
 
-              <div class="field">
+              <div class="field query-manufacturer-field">
                 <label id="manufacturerSelectLabel">制造商</label>
                 <div id="manufacturerMultiSelect" class="brand-multi-select">
                   <button id="manufacturerTrigger" class="brand-multi-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="manufacturerMenu">
@@ -2129,7 +2317,7 @@
                 </div>
               </div>
 
-              <div class="field">
+              <div class="field query-distributor-field">
                 <label id="distributorSelectLabel">分销商</label>
                 <div id="distributorMultiSelect" class="brand-multi-select">
                   <button id="distributorTrigger" class="brand-multi-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="distributorMenu">
@@ -2146,7 +2334,7 @@
                 </div>
               </div>
 
-              <div class="field">
+              <div class="field query-category-field">
                 <label for="categorySelect">产品类型</label>
                 <select id="categorySelect">
                   <option value="电子电器">电子电器</option>
@@ -2157,7 +2345,7 @@
                 </select>
               </div>
 
-              <div class="field">
+              <div class="field query-electric-field">
                 <label for="electricSelect">是否带电</label>
                 <select id="electricSelect">
                   <option value="是">是</option>
@@ -2165,7 +2353,7 @@
                 </select>
               </div>
 
-              <div class="field">
+              <div class="field query-package-field">
                 <label for="packageSelect">包材类型</label>
                 <select id="packageSelect">
                   <option value="纸箱+塑料袋">纸箱+塑料袋</option>
@@ -2181,7 +2369,7 @@
                 </select>
               </div>
 
-              <div class="field">
+              <div class="field query-wireless-field">
                 <label for="wirelessSelect">是否无线射频</label>
                 <select id="wirelessSelect">
                   <option value="否">否</option>
@@ -2189,7 +2377,7 @@
                 </select>
               </div>
 
-              <div class="field">
+              <div class="field query-plug-field">
                 <label for="plugSelect">是否带插头</label>
                 <select id="plugSelect">
                   <option value="否">否</option>
@@ -2197,7 +2385,7 @@
                 </select>
               </div>
 
-              <div class="field">
+              <div class="field query-battery-field">
                 <label for="batterySelect">电池类型</label>
                 <select id="batterySelect">
                   <option value="">无/不区分</option>
